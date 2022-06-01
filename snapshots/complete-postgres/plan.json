@@ -35,57 +35,6 @@
                         {
                             "resources": [
                                 {
-                                    "address": "module.db.module.db_parameter_group.aws_db_parameter_group.this[0]",
-                                    "mode": "managed",
-                                    "type": "aws_db_parameter_group",
-                                    "name": "this",
-                                    "index": 0,
-                                    "provider_name": "registry.terraform.io/hashicorp/aws",
-                                    "schema_version": 0,
-                                    "values": {
-                                        "description": "complete-postgresql parameter group",
-                                        "family": "postgres14",
-                                        "name_prefix": "complete-postgresql-",
-                                        "parameter": [
-                                            {
-                                                "apply_method": "immediate",
-                                                "name": "autovacuum",
-                                                "value": "1"
-                                            },
-                                            {
-                                                "apply_method": "immediate",
-                                                "name": "client_encoding",
-                                                "value": "utf8"
-                                            }
-                                        ],
-                                        "tags": {
-                                            "Environment": "dev",
-                                            "Name": "complete-postgresql",
-                                            "Owner": "user",
-                                            "Sensitive": "low"
-                                        },
-                                        "tags_all": {
-                                            "Environment": "dev",
-                                            "Name": "complete-postgresql",
-                                            "Owner": "user",
-                                            "Sensitive": "low"
-                                        }
-                                    },
-                                    "sensitive_values": {
-                                        "parameter": [
-                                            {},
-                                            {}
-                                        ],
-                                        "tags": {},
-                                        "tags_all": {}
-                                    }
-                                }
-                            ],
-                            "address": "module.db.module.db_parameter_group"
-                        },
-                        {
-                            "resources": [
-                                {
                                     "address": "module.db.module.db_instance.aws_cloudwatch_log_group.this[\"postgresql\"]",
                                     "mode": "managed",
                                     "type": "aws_cloudwatch_log_group",
@@ -175,7 +124,7 @@
                                         "maintenance_window": "mon:00:00-mon:03:00",
                                         "max_allocated_storage": 100,
                                         "monitoring_interval": 60,
-                                        "multi_az": true,
+                                        "multi_az": false,
                                         "performance_insights_enabled": true,
                                         "performance_insights_retention_period": 7,
                                         "port": 5432,
@@ -266,6 +215,57 @@
                                 }
                             ],
                             "address": "module.db.module.db_instance"
+                        },
+                        {
+                            "resources": [
+                                {
+                                    "address": "module.db.module.db_parameter_group.aws_db_parameter_group.this[0]",
+                                    "mode": "managed",
+                                    "type": "aws_db_parameter_group",
+                                    "name": "this",
+                                    "index": 0,
+                                    "provider_name": "registry.terraform.io/hashicorp/aws",
+                                    "schema_version": 0,
+                                    "values": {
+                                        "description": "complete-postgresql parameter group",
+                                        "family": "postgres14",
+                                        "name_prefix": "complete-postgresql-",
+                                        "parameter": [
+                                            {
+                                                "apply_method": "immediate",
+                                                "name": "autovacuum",
+                                                "value": "1"
+                                            },
+                                            {
+                                                "apply_method": "immediate",
+                                                "name": "client_encoding",
+                                                "value": "utf8"
+                                            }
+                                        ],
+                                        "tags": {
+                                            "Environment": "dev",
+                                            "Name": "complete-postgresql",
+                                            "Owner": "user",
+                                            "Sensitive": "low"
+                                        },
+                                        "tags_all": {
+                                            "Environment": "dev",
+                                            "Name": "complete-postgresql",
+                                            "Owner": "user",
+                                            "Sensitive": "low"
+                                        }
+                                    },
+                                    "sensitive_values": {
+                                        "parameter": [
+                                            {},
+                                            {}
+                                        ],
+                                        "tags": {},
+                                        "tags_all": {}
+                                    }
+                                }
+                            ],
+                            "address": "module.db.module.db_parameter_group"
                         }
                     ]
                 },
@@ -1361,7 +1361,7 @@
                     "maintenance_window": "mon:00:00-mon:03:00",
                     "max_allocated_storage": 100,
                     "monitoring_interval": 60,
-                    "multi_az": true,
+                    "multi_az": false,
                     "performance_insights_enabled": true,
                     "performance_insights_retention_period": 7,
                     "port": 5432,
@@ -3525,9 +3525,6 @@
                         },
                         "monitoring_role_name": {
                             "constant_value": "example-monitoring-role-name"
-                        },
-                        "multi_az": {
-                            "constant_value": true
                         },
                         "parameters": {
                             "constant_value": [
@@ -19052,171 +19049,17 @@
     },
     "relevant_attributes": [
         {
-            "resource": "module.db.module.db_subnet_group.aws_db_subnet_group.this[0]",
-            "attribute": [
-                "arn"
-            ]
-        },
-        {
-            "resource": "module.vpc.aws_subnet.public",
-            "attribute": []
-        },
-        {
-            "resource": "module.vpc.aws_route_table.private",
-            "attribute": []
-        },
-        {
-            "resource": "module.vpc.aws_default_vpc.this[0]",
-            "attribute": [
-                "enable_dns_hostnames"
-            ]
-        },
-        {
-            "resource": "module.db_disabled.module.db_instance.aws_cloudwatch_log_group.this",
-            "attribute": []
-        },
-        {
-            "resource": "module.db.module.db_parameter_group.aws_db_parameter_group.this[0]",
-            "attribute": [
-                "arn"
-            ]
-        },
-        {
-            "resource": "module.db.module.db_instance.aws_db_instance.this[0]",
-            "attribute": [
-                "ca_cert_identifier"
-            ]
-        },
-        {
-            "resource": "module.vpc.aws_vpc.this[0]",
-            "attribute": [
-                "instance_tenancy"
-            ]
-        },
-        {
-            "resource": "module.vpc.aws_vpn_gateway_attachment.this[0]",
-            "attribute": [
-                "vpn_gateway_id"
-            ]
-        },
-        {
-            "resource": "module.db_disabled.module.db_instance.aws_db_instance.this[0]",
-            "attribute": [
-                "ca_cert_identifier"
-            ]
-        },
-        {
-            "resource": "module.vpc.aws_route_table_association.database",
-            "attribute": []
-        },
-        {
-            "resource": "module.vpc.aws_route.database_nat_gateway",
-            "attribute": []
-        },
-        {
-            "resource": "module.db_default.module.db_instance.aws_db_instance.this[0]",
-            "attribute": [
-                "engine_version_actual"
-            ]
-        },
-        {
-            "resource": "module.db.module.db_instance.aws_db_instance.this[0]",
-            "attribute": [
-                "engine_version_actual"
-            ]
-        },
-        {
-            "resource": "module.db.module.db_instance.data.aws_partition.current",
-            "attribute": [
-                "partition"
-            ]
-        },
-        {
-            "resource": "module.vpc.aws_default_vpc.this[0]",
-            "attribute": [
-                "main_route_table_id"
-            ]
-        },
-        {
-            "resource": "module.db.module.db_instance.aws_cloudwatch_log_group.this",
-            "attribute": []
-        },
-        {
-            "resource": "module.vpc.aws_egress_only_internet_gateway.this[0]",
-            "attribute": [
-                "id"
-            ]
-        },
-        {
-            "resource": "module.vpc.aws_route_table_association.intra",
-            "attribute": []
-        },
-        {
             "resource": "module.db.module.db_instance.aws_db_instance.this[0]",
             "attribute": [
                 "engine"
             ]
         },
         {
-            "resource": "module.db.module.db_instance.aws_iam_role.enhanced_monitoring[0]",
-            "attribute": [
-                "name"
-            ]
-        },
-        {
-            "resource": "module.vpc.aws_vpc.this[0]",
-            "attribute": [
-                "default_route_table_id"
-            ]
-        },
-        {
-            "resource": "module.db_disabled.module.db_instance.aws_iam_role.enhanced_monitoring[0]",
-            "attribute": [
-                "arn"
-            ]
-        },
-        {
-            "resource": "module.db_disabled.module.db_instance.aws_db_instance.this[0]",
-            "attribute": [
-                "resource_id"
-            ]
-        },
-        {
-            "resource": "module.vpc.aws_route_table_association.redshift",
+            "resource": "module.vpc.aws_route_table.intra",
             "attribute": []
         },
         {
-            "resource": "module.vpc.aws_route_table_association.public",
-            "attribute": []
-        },
-        {
-            "resource": "module.vpc.aws_route.private_nat_gateway",
-            "attribute": []
-        },
-        {
-            "resource": "module.vpc.aws_vpc.this[0]",
-            "attribute": [
-                "ipv6_cidr_block"
-            ]
-        },
-        {
-            "resource": "module.vpc.aws_customer_gateway.this",
-            "attribute": []
-        },
-        {
-            "resource": "module.db_default.module.db_instance.aws_iam_role.enhanced_monitoring[0]",
-            "attribute": [
-                "name"
-            ]
-        },
-        {
-            "resource": "module.security_group.aws_security_group.this[0]",
-            "attribute": [
-                "id"
-            ]
-        },
-        {
-            "resource": "module.vpc.aws_network_acl.database[0]",
+            "resource": "module.vpc.aws_network_acl.outpost[0]",
             "attribute": [
                 "arn"
             ]
@@ -19224,77 +19067,7 @@
         {
             "resource": "module.db_default.module.db_instance.aws_db_instance.this[0]",
             "attribute": [
-                "resource_id"
-            ]
-        },
-        {
-            "resource": "module.db_disabled.module.db_option_group.aws_db_option_group.this[0]",
-            "attribute": [
-                "arn"
-            ]
-        },
-        {
-            "resource": "module.db_disabled.module.db_subnet_group.aws_db_subnet_group.this[0]",
-            "attribute": [
-                "arn"
-            ]
-        },
-        {
-            "resource": "module.vpc.aws_vpc.this[0]",
-            "attribute": [
-                "arn"
-            ]
-        },
-        {
-            "resource": "module.vpc.aws_internet_gateway.this[0]",
-            "attribute": [
-                "arn"
-            ]
-        },
-        {
-            "resource": "module.vpc.aws_route.public_internet_gateway[0]",
-            "attribute": [
-                "id"
-            ]
-        },
-        {
-            "resource": "module.db_default.module.db_parameter_group.aws_db_parameter_group.this[0]",
-            "attribute": [
-                "arn"
-            ]
-        },
-        {
-            "resource": "module.security_group.aws_security_group.this_name_prefix[0]",
-            "attribute": [
-                "owner_id"
-            ]
-        },
-        {
-            "resource": "module.vpc.aws_route_table.redshift",
-            "attribute": []
-        },
-        {
-            "resource": "module.db.module.db_instance.aws_db_instance.this[0]",
-            "attribute": [
-                "hosted_zone_id"
-            ]
-        },
-        {
-            "resource": "module.db_default.module.db_instance.random_id.snapshot_identifier[0]",
-            "attribute": [
-                "hex"
-            ]
-        },
-        {
-            "resource": "module.vpc.aws_network_acl.private[0]",
-            "attribute": [
-                "id"
-            ]
-        },
-        {
-            "resource": "module.db_default.module.db_subnet_group.aws_db_subnet_group.this[0]",
-            "attribute": [
-                "id"
+                "status"
             ]
         },
         {
@@ -19304,21 +19077,257 @@
             ]
         },
         {
+            "resource": "module.vpc.aws_vpc.this[0]",
+            "attribute": [
+                "instance_tenancy"
+            ]
+        },
+        {
+            "resource": "module.vpc.aws_internet_gateway.this[0]",
+            "attribute": [
+                "arn"
+            ]
+        },
+        {
+            "resource": "module.vpc.aws_elasticache_subnet_group.elasticache[0]",
+            "attribute": [
+                "id"
+            ]
+        },
+        {
+            "resource": "module.vpc.aws_network_acl.elasticache[0]",
+            "attribute": [
+                "id"
+            ]
+        },
+        {
+            "resource": "module.db.module.db_instance.aws_iam_role.enhanced_monitoring[0]",
+            "attribute": [
+                "name"
+            ]
+        },
+        {
+            "resource": "module.vpc.aws_internet_gateway.this[0]",
+            "attribute": [
+                "id"
+            ]
+        },
+        {
+            "resource": "module.db_disabled.module.db_subnet_group.aws_db_subnet_group.this[0]",
+            "attribute": [
+                "id"
+            ]
+        },
+        {
+            "resource": "module.vpc.aws_default_vpc.this[0]",
+            "attribute": [
+                "main_route_table_id"
+            ]
+        },
+        {
+            "resource": "module.db_default.module.db_subnet_group.aws_db_subnet_group.this[0]",
+            "attribute": [
+                "id"
+            ]
+        },
+        {
+            "resource": "module.db.module.db_instance.aws_db_instance.this[0]",
+            "attribute": [
+                "address"
+            ]
+        },
+        {
+            "resource": "module.db_default.module.db_instance.aws_db_instance.this[0]",
+            "attribute": [
+                "availability_zone"
+            ]
+        },
+        {
+            "resource": "module.vpc.aws_network_acl.public[0]",
+            "attribute": [
+                "id"
+            ]
+        },
+        {
+            "resource": "module.vpc.aws_route.private_nat_gateway",
+            "attribute": []
+        },
+        {
+            "resource": "module.db.module.db_subnet_group.aws_db_subnet_group.this[0]",
+            "attribute": [
+                "arn"
+            ]
+        },
+        {
+            "resource": "module.vpc.aws_default_vpc.this[0]",
+            "attribute": [
+                "arn"
+            ]
+        },
+        {
+            "resource": "module.vpc.aws_default_vpc.this[0]",
+            "attribute": [
+                "enable_dns_hostnames"
+            ]
+        },
+        {
+            "resource": "module.db_disabled.module.db_instance.aws_iam_role.enhanced_monitoring[0]",
+            "attribute": [
+                "arn"
+            ]
+        },
+        {
+            "resource": "module.vpc.aws_route.database_ipv6_egress[0]",
+            "attribute": [
+                "id"
+            ]
+        },
+        {
+            "resource": "module.db_default.module.db_parameter_group.aws_db_parameter_group.this[0]",
+            "attribute": [
+                "id"
+            ]
+        },
+        {
+            "resource": "module.vpc.aws_vpc.this[0]",
+            "attribute": [
+                "cidr_block"
+            ]
+        },
+        {
+            "resource": "module.security_group.aws_security_group.this_name_prefix[0]",
+            "attribute": [
+                "name"
+            ]
+        },
+        {
+            "resource": "module.vpc.aws_network_acl.elasticache[0]",
+            "attribute": [
+                "arn"
+            ]
+        },
+        {
+            "resource": "module.vpc.aws_route_table_association.redshift",
+            "attribute": []
+        },
+        {
+            "resource": "module.vpc.aws_network_acl.database[0]",
+            "attribute": [
+                "id"
+            ]
+        },
+        {
+            "resource": "module.db.module.db_instance.aws_db_instance.this[0]",
+            "attribute": [
+                "ca_cert_identifier"
+            ]
+        },
+        {
+            "resource": "module.db.module.db_instance.data.aws_partition.current",
+            "attribute": [
+                "partition"
+            ]
+        },
+        {
+            "resource": "module.db_disabled.module.db_instance.aws_db_instance.this[0]",
+            "attribute": [
+                "id"
+            ]
+        },
+        {
+            "resource": "module.db_disabled.module.db_instance.aws_db_instance.this[0]",
+            "attribute": [
+                "address"
+            ]
+        },
+        {
+            "resource": "module.vpc.aws_redshift_subnet_group.redshift[0]",
+            "attribute": [
+                "id"
+            ]
+        },
+        {
+            "resource": "module.db_default.module.db_instance.aws_db_instance.this[0]",
+            "attribute": [
+                "arn"
+            ]
+        },
+        {
+            "resource": "module.vpc.aws_route_table.database",
+            "attribute": []
+        },
+        {
+            "resource": "module.db.module.db_instance.aws_cloudwatch_log_group.this",
+            "attribute": []
+        },
+        {
+            "resource": "module.vpc.aws_vpc.this[0]",
+            "attribute": [
+                "ipv6_association_id"
+            ]
+        },
+        {
+            "resource": "module.vpc.aws_route.private_ipv6_egress",
+            "attribute": []
+        },
+        {
+            "resource": "module.db.module.db_instance.aws_db_instance.this[0]",
+            "attribute": [
+                "status"
+            ]
+        },
+        {
             "resource": "module.db_default.module.db_option_group.aws_db_option_group.this[0]",
             "attribute": [
                 "id"
             ]
         },
         {
-            "resource": "module.db_disabled.module.db_parameter_group.aws_db_parameter_group.this[0]",
+            "resource": "module.vpc.aws_egress_only_internet_gateway.this[0]",
             "attribute": [
-                "arn"
+                "id"
             ]
         },
         {
-            "resource": "module.vpc.aws_vpc.this[0]",
+            "resource": "module.vpc.aws_flow_log.this[0]",
             "attribute": [
-                "ipv6_association_id"
+                "id"
+            ]
+        },
+        {
+            "resource": "module.db_default.module.db_instance.aws_db_instance.this[0]",
+            "attribute": [
+                "ca_cert_identifier"
+            ]
+        },
+        {
+            "resource": "module.db_disabled.module.db_instance.aws_db_instance.this[0]",
+            "attribute": [
+                "resource_id"
+            ]
+        },
+        {
+            "resource": "module.vpc.aws_route.public_internet_gateway_ipv6[0]",
+            "attribute": [
+                "id"
+            ]
+        },
+        {
+            "resource": "module.db.module.db_instance.aws_db_instance.this[0]",
+            "attribute": [
+                "port"
+            ]
+        },
+        {
+            "resource": "module.db_disabled.random_password.master_password[0]",
+            "attribute": [
+                "result"
+            ]
+        },
+        {
+            "resource": "module.db.module.db_option_group.aws_db_option_group.this[0]",
+            "attribute": [
+                "arn"
             ]
         },
         {
@@ -19328,13 +19337,7 @@
             ]
         },
         {
-            "resource": "module.security_group.aws_security_group.this[0]",
-            "attribute": [
-                "description"
-            ]
-        },
-        {
-            "resource": "module.db_default.module.db_instance.aws_db_instance.this[0]",
+            "resource": "module.db_default.module.db_instance.aws_iam_role.enhanced_monitoring[0]",
             "attribute": [
                 "arn"
             ]
@@ -19342,44 +19345,56 @@
         {
             "resource": "module.vpc.aws_vpc.this[0]",
             "attribute": [
-                "default_security_group_id"
+                "enable_dns_support"
             ]
         },
         {
-            "resource": "module.vpc.aws_vpn_gateway.this[0]",
+            "resource": "module.db.module.db_subnet_group.aws_db_subnet_group.this[0]",
             "attribute": [
-                "arn"
-            ]
-        },
-        {
-            "resource": "module.db_disabled.module.db_instance.aws_db_instance.this[0]",
-            "attribute": [
-                "engine"
+                "id"
             ]
         },
         {
             "resource": "module.db_default.module.db_instance.aws_db_instance.this[0]",
             "attribute": [
-                "engine"
+                "resource_id"
             ]
         },
         {
-            "resource": "module.db.random_password.master_password[0]",
+            "resource": "module.vpc.aws_egress_only_internet_gateway.this",
+            "attribute": []
+        },
+        {
+            "resource": "module.db_disabled.module.db_parameter_group.aws_db_parameter_group.this[0]",
             "attribute": [
-                "result"
+                "arn"
             ]
         },
         {
-            "resource": "module.db.module.db_instance.data.aws_iam_policy_document.enhanced_monitoring",
+            "resource": "module.vpc.aws_vpc_dhcp_options.this[0]",
             "attribute": [
-                "json"
+                "id"
             ]
         },
         {
-            "resource": "module.vpc.aws_default_vpc.this[0]",
+            "resource": "module.db_disabled.module.db_instance.aws_db_instance.this[0]",
             "attribute": [
-                "default_route_table_id"
+                "port"
             ]
+        },
+        {
+            "resource": "module.vpc.aws_subnet.intra",
+            "attribute": []
+        },
+        {
+            "resource": "module.vpc.aws_vpc.this[0]",
+            "attribute": [
+                "arn"
+            ]
+        },
+        {
+            "resource": "module.security_group.aws_security_group.this",
+            "attribute": []
         },
         {
             "resource": "module.db_disabled.module.db_instance.aws_db_instance.this[0]",
@@ -19394,71 +19409,43 @@
             ]
         },
         {
-            "resource": "module.vpc.aws_network_acl.public[0]",
-            "attribute": [
-                "id"
-            ]
-        },
-        {
-            "resource": "module.vpc.aws_egress_only_internet_gateway.this",
-            "attribute": []
-        },
-        {
-            "resource": "module.db_default.module.db_instance.aws_cloudwatch_log_group.this",
-            "attribute": []
-        },
-        {
-            "resource": "module.vpc.aws_network_acl.redshift[0]",
-            "attribute": [
-                "id"
-            ]
-        },
-        {
-            "resource": "module.vpc.aws_route_table_association.private",
-            "attribute": []
-        },
-        {
-            "resource": "module.db.module.db_instance.aws_db_instance.this[0]",
-            "attribute": [
-                "id"
-            ]
-        },
-        {
-            "resource": "module.db_default.random_password.master_password[0]",
-            "attribute": [
-                "result"
-            ]
-        },
-        {
-            "resource": "module.vpc.aws_route.private_ipv6_egress",
-            "attribute": []
-        },
-        {
-            "resource": "module.vpc.aws_internet_gateway.this[0]",
-            "attribute": [
-                "id"
-            ]
-        },
-        {
-            "resource": "module.vpc.aws_vpc_dhcp_options.this[0]",
-            "attribute": [
-                "id"
-            ]
-        },
-        {
-            "resource": "module.db_disabled.module.db_subnet_group.aws_db_subnet_group.this[0]",
-            "attribute": [
-                "id"
-            ]
-        },
-        {
-            "resource": "module.vpc.aws_default_vpc.this[0]",
+            "resource": "module.vpc.aws_network_acl.database[0]",
             "attribute": [
                 "arn"
             ]
         },
         {
-            "resource": "module.vpc.aws_subnet.redshift",
+            "resource": "module.db_default.module.db_instance.aws_db_instance.this[0]",
+            "attribute": [
+                "hosted_zone_id"
+            ]
+        },
+        {
+            "resource": "module.vpc.aws_vpc.this[0]",
+            "attribute": [
+                "default_network_acl_id"
+            ]
+        },
+        {
+            "resource": "module.db_disabled.module.db_instance.aws_db_instance.this[0]",
+            "attribute": [
+                "name"
+            ]
+        },
+        {
+            "resource": "module.db_default.module.db_instance.aws_db_instance.this[0]",
+            "attribute": [
+                "address"
+            ]
+        },
+        {
+            "resource": "module.db.module.db_instance.random_id.snapshot_identifier[0]",
+            "attribute": [
+                "hex"
+            ]
+        },
+        {
+            "resource": "module.vpc.aws_route_table.private",
             "attribute": []
         },
         {
@@ -19466,115 +19453,27 @@
             "attribute": []
         },
         {
-            "resource": "module.vpc.aws_vpc.this[0]",
+            "resource": "module.vpc.aws_default_vpc.this[0]",
+            "attribute": [
+                "id"
+            ]
+        },
+        {
+            "resource": "module.vpc.aws_default_vpc.this[0]",
             "attribute": [
                 "enable_dns_support"
             ]
         },
         {
-            "resource": "module.db_disabled.module.db_instance.aws_db_instance.this[0]",
+            "resource": "module.db_default.module.db_instance.random_id.snapshot_identifier[0]",
             "attribute": [
-                "endpoint"
+                "hex"
             ]
         },
         {
-            "resource": "module.db_disabled.module.db_instance.aws_db_instance.this[0]",
-            "attribute": [
-                "address"
-            ]
-        },
-        {
-            "resource": "module.vpc.aws_route_table.public",
-            "attribute": []
-        },
-        {
-            "resource": "module.vpc.aws_subnet.elasticache",
-            "attribute": []
-        },
-        {
-            "resource": "module.db_disabled.module.db_instance.aws_db_instance.this[0]",
-            "attribute": [
-                "hosted_zone_id"
-            ]
-        },
-        {
-            "resource": "module.db.module.db_instance.aws_db_instance.this[0]",
-            "attribute": [
-                "resource_id"
-            ]
-        },
-        {
-            "resource": "module.db.module.db_instance.aws_db_instance.this[0]",
-            "attribute": [
-                "name"
-            ]
-        },
-        {
-            "resource": "module.db_disabled.module.db_instance.aws_db_instance.this[0]",
-            "attribute": [
-                "arn"
-            ]
-        },
-        {
-            "resource": "module.vpc.aws_network_acl.elasticache[0]",
+            "resource": "module.db_disabled.module.db_parameter_group.aws_db_parameter_group.this[0]",
             "attribute": [
                 "id"
-            ]
-        },
-        {
-            "resource": "module.security_group.aws_security_group.this",
-            "attribute": []
-        },
-        {
-            "resource": "module.vpc.aws_network_acl.redshift[0]",
-            "attribute": [
-                "arn"
-            ]
-        },
-        {
-            "resource": "module.vpc.aws_route_table_association.elasticache",
-            "attribute": []
-        },
-        {
-            "resource": "module.db_default.module.db_instance.aws_db_instance.this[0]",
-            "attribute": [
-                "status"
-            ]
-        },
-        {
-            "resource": "module.db_default.module.db_instance.aws_iam_role.enhanced_monitoring[0]",
-            "attribute": [
-                "arn"
-            ]
-        },
-        {
-            "resource": "module.db.module.db_instance.aws_iam_role.enhanced_monitoring[0]",
-            "attribute": [
-                "arn"
-            ]
-        },
-        {
-            "resource": "module.security_group.aws_security_group.this[0]",
-            "attribute": [
-                "vpc_id"
-            ]
-        },
-        {
-            "resource": "module.security_group.aws_security_group.this_name_prefix[0]",
-            "attribute": [
-                "vpc_id"
-            ]
-        },
-        {
-            "resource": "module.db_disabled.module.db_instance.aws_db_instance.this[0]",
-            "attribute": [
-                "id"
-            ]
-        },
-        {
-            "resource": "module.db.module.db_instance.aws_db_instance.this[0]",
-            "attribute": [
-                "username"
             ]
         },
         {
@@ -19584,45 +19483,9 @@
             ]
         },
         {
-            "resource": "module.vpc.aws_network_acl.database[0]",
+            "resource": "module.security_group.aws_security_group.this[0]",
             "attribute": [
-                "id"
-            ]
-        },
-        {
-            "resource": "module.db.module.db_instance.aws_db_instance.this[0]",
-            "attribute": [
-                "password"
-            ]
-        },
-        {
-            "resource": "module.db.module.db_instance.aws_db_instance.this[0]",
-            "attribute": [
-                "availability_zone"
-            ]
-        },
-        {
-            "resource": "module.db_disabled.module.db_instance.aws_db_instance.this[0]",
-            "attribute": [
-                "availability_zone"
-            ]
-        },
-        {
-            "resource": "module.db_disabled.module.db_instance.aws_db_instance.this[0]",
-            "attribute": [
-                "password"
-            ]
-        },
-        {
-            "resource": "module.db_default.module.db_instance.aws_db_instance.this[0]",
-            "attribute": [
-                "endpoint"
-            ]
-        },
-        {
-            "resource": "module.db.module.db_instance.aws_db_instance.this[0]",
-            "attribute": [
-                "arn"
+                "name"
             ]
         },
         {
@@ -19632,63 +19495,11 @@
             ]
         },
         {
-            "resource": "module.vpc.aws_elasticache_subnet_group.elasticache[0]",
-            "attribute": [
-                "name"
-            ]
-        },
-        {
-            "resource": "module.vpc.aws_route_table.elasticache",
+            "resource": "module.vpc.aws_eip.nat",
             "attribute": []
         },
         {
-            "resource": "module.db.module.db_instance.aws_db_instance.this[0]",
-            "attribute": [
-                "port"
-            ]
-        },
-        {
-            "resource": "module.db_default.module.db_option_group.aws_db_option_group.this[0]",
-            "attribute": [
-                "arn"
-            ]
-        },
-        {
-            "resource": "module.db.module.db_parameter_group.aws_db_parameter_group.this[0]",
-            "attribute": [
-                "id"
-            ]
-        },
-        {
-            "resource": "module.vpc.aws_vpc.this[0]",
-            "attribute": [
-                "enable_dns_hostnames"
-            ]
-        },
-        {
-            "resource": "module.vpc.aws_vpc.this[0]",
-            "attribute": [
-                "id"
-            ]
-        },
-        {
-            "resource": "module.vpc.aws_route_table.intra",
-            "attribute": []
-        },
-        {
-            "resource": "module.db_disabled.random_password.master_password[0]",
-            "attribute": [
-                "result"
-            ]
-        },
-        {
-            "resource": "module.vpc.aws_flow_log.this[0]",
-            "attribute": [
-                "id"
-            ]
-        },
-        {
-            "resource": "module.db.module.db_option_group.aws_db_option_group.this[0]",
+            "resource": "module.db_disabled.module.db_option_group.aws_db_option_group.this[0]",
             "attribute": [
                 "id"
             ]
@@ -19696,14 +19507,46 @@
         {
             "resource": "module.db_disabled.module.db_instance.aws_db_instance.this[0]",
             "attribute": [
-                "username"
+                "engine_version_actual"
             ]
         },
         {
-            "resource": "module.vpc.aws_network_acl.public[0]",
+            "resource": "module.db_default.module.db_instance.aws_db_instance.this[0]",
             "attribute": [
-                "arn"
+                "name"
             ]
+        },
+        {
+            "resource": "module.vpc.aws_route_table.public[0]",
+            "attribute": [
+                "id"
+            ]
+        },
+        {
+            "resource": "module.vpc.aws_vpc.this[0]",
+            "attribute": [
+                "default_route_table_id"
+            ]
+        },
+        {
+            "resource": "module.vpc.aws_route_table_association.intra",
+            "attribute": []
+        },
+        {
+            "resource": "module.db_default.module.db_instance.aws_db_instance.this[0]",
+            "attribute": [
+                "engine_version_actual"
+            ]
+        },
+        {
+            "resource": "module.vpc.aws_elasticache_subnet_group.elasticache[0]",
+            "attribute": [
+                "name"
+            ]
+        },
+        {
+            "resource": "module.vpc.aws_route_table_association.elasticache",
+            "attribute": []
         },
         {
             "resource": "module.vpc.aws_route.database_internet_gateway[0]",
@@ -19718,107 +19561,15 @@
             ]
         },
         {
-            "resource": "module.vpc.aws_default_vpc.this[0]",
-            "attribute": [
-                "id"
-            ]
-        },
-        {
-            "resource": "module.vpc.aws_default_vpc.this[0]",
-            "attribute": [
-                "cidr_block"
-            ]
-        },
-        {
-            "resource": "module.vpc.aws_vpc.this[0]",
-            "attribute": [
-                "cidr_block"
-            ]
-        },
-        {
-            "resource": "module.db_disabled.module.db_instance.aws_db_instance.this[0]",
-            "attribute": [
-                "domain"
-            ]
-        },
-        {
-            "resource": "module.security_group.aws_security_group.this[0]",
-            "attribute": [
-                "name"
-            ]
-        },
-        {
-            "resource": "module.db_default.module.db_instance.aws_db_instance.this[0]",
-            "attribute": [
-                "ca_cert_identifier"
-            ]
-        },
-        {
             "resource": "module.db.module.db_option_group.aws_db_option_group.this[0]",
             "attribute": [
-                "arn"
-            ]
-        },
-        {
-            "resource": "module.db_disabled.module.db_option_group.aws_db_option_group.this[0]",
-            "attribute": [
                 "id"
             ]
         },
         {
-            "resource": "module.vpc.aws_vpc_ipv4_cidr_block_association.this",
-            "attribute": []
-        },
-        {
-            "resource": "module.vpc.aws_vpc.this[0]",
+            "resource": "module.vpc.aws_default_vpc.this[0]",
             "attribute": [
                 "default_network_acl_id"
-            ]
-        },
-        {
-            "resource": "module.security_group.aws_security_group.this_name_prefix[0]",
-            "attribute": [
-                "description"
-            ]
-        },
-        {
-            "resource": "module.vpc.aws_elasticache_subnet_group.elasticache[0]",
-            "attribute": [
-                "id"
-            ]
-        },
-        {
-            "resource": "module.db_disabled.module.db_instance.aws_db_instance.this[0]",
-            "attribute": [
-                "port"
-            ]
-        },
-        {
-            "resource": "module.db_disabled.module.db_instance.aws_db_instance.this[0]",
-            "attribute": [
-                "name"
-            ]
-        },
-        {
-            "resource": "module.vpc.aws_network_acl.intra[0]",
-            "attribute": [
-                "arn"
-            ]
-        },
-        {
-            "resource": "module.vpc.aws_subnet.database",
-            "attribute": []
-        },
-        {
-            "resource": "module.vpc.aws_default_vpc.this[0]",
-            "attribute": [
-                "instance_tenancy"
-            ]
-        },
-        {
-            "resource": "module.vpc.aws_default_vpc.this[0]",
-            "attribute": [
-                "enable_dns_support"
             ]
         },
         {
@@ -19828,81 +19579,13 @@
             ]
         },
         {
-            "resource": "module.db_disabled.module.db_instance.aws_db_instance.this[0]",
-            "attribute": [
-                "engine_version_actual"
-            ]
-        },
-        {
-            "resource": "module.vpc.aws_network_acl.intra[0]",
-            "attribute": [
-                "id"
-            ]
-        },
-        {
-            "resource": "module.vpc.aws_route.public_internet_gateway_ipv6[0]",
-            "attribute": [
-                "id"
-            ]
-        },
-        {
-            "resource": "module.db_default.module.db_instance.aws_db_instance.this[0]",
-            "attribute": [
-                "name"
-            ]
-        },
-        {
-            "resource": "module.db_default.module.db_instance.aws_db_instance.this[0]",
-            "attribute": [
-                "address"
-            ]
-        },
-        {
-            "resource": "module.vpc.aws_route_table.database",
+            "resource": "module.vpc.aws_subnet.elasticache",
             "attribute": []
         },
         {
-            "resource": "module.vpc.aws_subnet.intra",
-            "attribute": []
-        },
-        {
-            "resource": "module.db_default.module.db_instance.aws_db_instance.this[0]",
+            "resource": "module.db.module.db_instance.aws_db_instance.this[0]",
             "attribute": [
-                "availability_zone"
-            ]
-        },
-        {
-            "resource": "module.db_default.module.db_instance.aws_db_instance.this[0]",
-            "attribute": [
-                "hosted_zone_id"
-            ]
-        },
-        {
-            "resource": "module.vpc.aws_vpc_ipv4_cidr_block_association.this[0]",
-            "attribute": [
-                "vpc_id"
-            ]
-        },
-        {
-            "resource": "module.security_group.aws_security_group.this_name_prefix",
-            "attribute": []
-        },
-        {
-            "resource": "module.vpc.aws_network_acl.outpost[0]",
-            "attribute": [
-                "id"
-            ]
-        },
-        {
-            "resource": "module.vpc.aws_route.database_ipv6_egress[0]",
-            "attribute": [
-                "id"
-            ]
-        },
-        {
-            "resource": "module.vpc.aws_db_subnet_group.database[0]",
-            "attribute": [
-                "name"
+                "username"
             ]
         },
         {
@@ -19912,19 +19595,11 @@
             ]
         },
         {
-            "resource": "module.db.module.db_instance.random_id.snapshot_identifier[0]",
-            "attribute": [
-                "hex"
-            ]
+            "resource": "module.vpc.aws_customer_gateway.this",
+            "attribute": []
         },
         {
-            "resource": "module.db.module.db_subnet_group.aws_db_subnet_group.this[0]",
-            "attribute": [
-                "id"
-            ]
-        },
-        {
-            "resource": "module.db_default.module.db_instance.aws_db_instance.this[0]",
+            "resource": "module.vpc.aws_network_acl.intra[0]",
             "attribute": [
                 "id"
             ]
@@ -19932,37 +19607,35 @@
         {
             "resource": "module.db.module.db_instance.aws_db_instance.this[0]",
             "attribute": [
-                "address"
+                "resource_id"
             ]
         },
         {
-            "resource": "module.vpc.aws_default_vpc.this[0]",
+            "resource": "module.vpc.aws_vpc_ipv4_cidr_block_association.this[0]",
             "attribute": [
-                "default_network_acl_id"
+                "vpc_id"
             ]
         },
         {
-            "resource": "module.vpc.aws_network_acl.outpost[0]",
-            "attribute": [
-                "arn"
-            ]
-        },
-        {
-            "resource": "module.vpc.aws_network_acl.elasticache[0]",
-            "attribute": [
-                "arn"
-            ]
-        },
-        {
-            "resource": "module.security_group.aws_security_group.this[0]",
-            "attribute": [
-                "owner_id"
-            ]
+            "resource": "module.db_default.module.db_instance.aws_cloudwatch_log_group.this",
+            "attribute": []
         },
         {
             "resource": "module.security_group.aws_security_group.this_name_prefix[0]",
             "attribute": [
-                "name"
+                "description"
+            ]
+        },
+        {
+            "resource": "module.db_default.module.db_instance.aws_db_instance.this[0]",
+            "attribute": [
+                "engine"
+            ]
+        },
+        {
+            "resource": "module.db_default.module.db_instance.aws_db_instance.this[0]",
+            "attribute": [
+                "id"
             ]
         },
         {
@@ -19972,27 +19645,21 @@
             ]
         },
         {
-            "resource": "module.vpc.aws_route_table.public[0]",
+            "resource": "module.vpc.aws_network_acl.redshift[0]",
             "attribute": [
                 "id"
             ]
         },
         {
-            "resource": "module.db_disabled.module.db_parameter_group.aws_db_parameter_group.this[0]",
+            "resource": "module.vpc.aws_route.public_internet_gateway[0]",
             "attribute": [
                 "id"
             ]
         },
         {
-            "resource": "module.db_disabled.module.db_instance.aws_db_instance.this[0]",
+            "resource": "module.vpc.aws_db_subnet_group.database[0]",
             "attribute": [
-                "status"
-            ]
-        },
-        {
-            "resource": "module.db_default.module.db_instance.aws_db_instance.this[0]",
-            "attribute": [
-                "password"
+                "id"
             ]
         },
         {
@@ -20002,9 +19669,25 @@
             ]
         },
         {
-            "resource": "module.db_default.module.db_parameter_group.aws_db_parameter_group.this[0]",
+            "resource": "module.vpc.aws_nat_gateway.this",
+            "attribute": []
+        },
+        {
+            "resource": "module.db.module.db_instance.aws_db_instance.this[0]",
             "attribute": [
-                "id"
+                "hosted_zone_id"
+            ]
+        },
+        {
+            "resource": "module.db_default.random_password.master_password[0]",
+            "attribute": [
+                "result"
+            ]
+        },
+        {
+            "resource": "module.vpc.aws_default_vpc.this[0]",
+            "attribute": [
+                "instance_tenancy"
             ]
         },
         {
@@ -20014,19 +19697,169 @@
             ]
         },
         {
-            "resource": "module.db.module.db_instance.aws_db_instance.this[0]",
+            "resource": "module.vpc.aws_vpc.this[0]",
             "attribute": [
-                "status"
+                "enable_dns_hostnames"
             ]
         },
         {
-            "resource": "module.vpc.aws_nat_gateway.this",
+            "resource": "module.vpc.aws_network_acl.redshift[0]",
+            "attribute": [
+                "arn"
+            ]
+        },
+        {
+            "resource": "module.vpc.aws_vpc_ipv4_cidr_block_association.this",
             "attribute": []
         },
         {
-            "resource": "module.vpc.aws_db_subnet_group.database[0]",
+            "resource": "module.vpc.aws_route_table.redshift",
+            "attribute": []
+        },
+        {
+            "resource": "module.security_group.aws_security_group.this_name_prefix[0]",
+            "attribute": [
+                "vpc_id"
+            ]
+        },
+        {
+            "resource": "module.db.module.db_instance.aws_db_instance.this[0]",
+            "attribute": [
+                "engine_version_actual"
+            ]
+        },
+        {
+            "resource": "module.vpc.aws_default_vpc.this[0]",
+            "attribute": [
+                "default_route_table_id"
+            ]
+        },
+        {
+            "resource": "module.vpc.aws_vpc.this[0]",
             "attribute": [
                 "id"
+            ]
+        },
+        {
+            "resource": "module.db_disabled.module.db_instance.aws_db_instance.this[0]",
+            "attribute": [
+                "arn"
+            ]
+        },
+        {
+            "resource": "module.db_disabled.module.db_instance.aws_db_instance.this[0]",
+            "attribute": [
+                "hosted_zone_id"
+            ]
+        },
+        {
+            "resource": "module.vpc.aws_subnet.redshift",
+            "attribute": []
+        },
+        {
+            "resource": "module.db_disabled.module.db_instance.aws_db_instance.this[0]",
+            "attribute": [
+                "endpoint"
+            ]
+        },
+        {
+            "resource": "module.db_disabled.module.db_instance.aws_db_instance.this[0]",
+            "attribute": [
+                "password"
+            ]
+        },
+        {
+            "resource": "module.db_disabled.module.db_instance.aws_db_instance.this[0]",
+            "attribute": [
+                "ca_cert_identifier"
+            ]
+        },
+        {
+            "resource": "module.db_disabled.module.db_instance.aws_db_instance.this[0]",
+            "attribute": [
+                "availability_zone"
+            ]
+        },
+        {
+            "resource": "module.db_default.module.db_instance.aws_db_instance.this[0]",
+            "attribute": [
+                "endpoint"
+            ]
+        },
+        {
+            "resource": "module.db.module.db_instance.aws_db_instance.this[0]",
+            "attribute": [
+                "password"
+            ]
+        },
+        {
+            "resource": "module.vpc.aws_subnet.database",
+            "attribute": []
+        },
+        {
+            "resource": "module.db_disabled.module.db_instance.aws_db_instance.this[0]",
+            "attribute": [
+                "domain"
+            ]
+        },
+        {
+            "resource": "module.db.module.db_instance.aws_iam_role.enhanced_monitoring[0]",
+            "attribute": [
+                "arn"
+            ]
+        },
+        {
+            "resource": "module.vpc.aws_vpn_gateway.this[0]",
+            "attribute": [
+                "arn"
+            ]
+        },
+        {
+            "resource": "module.vpc.aws_route_table.public",
+            "attribute": []
+        },
+        {
+            "resource": "module.vpc.aws_route_table_association.public",
+            "attribute": []
+        },
+        {
+            "resource": "module.db_default.module.db_parameter_group.aws_db_parameter_group.this[0]",
+            "attribute": [
+                "arn"
+            ]
+        },
+        {
+            "resource": "module.db_default.module.db_option_group.aws_db_option_group.this[0]",
+            "attribute": [
+                "arn"
+            ]
+        },
+        {
+            "resource": "module.db_disabled.module.db_subnet_group.aws_db_subnet_group.this[0]",
+            "attribute": [
+                "arn"
+            ]
+        },
+        {
+            "resource": "module.db_disabled.module.db_instance.aws_db_instance.this[0]",
+            "attribute": [
+                "engine"
+            ]
+        },
+        {
+            "resource": "module.db.module.db_instance.aws_db_instance.this[0]",
+            "attribute": [
+                "arn"
+            ]
+        },
+        {
+            "resource": "module.security_group.aws_security_group.this_name_prefix",
+            "attribute": []
+        },
+        {
+            "resource": "module.security_group.aws_security_group.this_name_prefix[0]",
+            "attribute": [
+                "owner_id"
             ]
         },
         {
@@ -20036,12 +19869,88 @@
             ]
         },
         {
-            "resource": "module.vpc.aws_eip.nat",
-            "attribute": []
+            "resource": "module.db_default.module.db_instance.aws_db_instance.this[0]",
+            "attribute": [
+                "password"
+            ]
+        },
+        {
+            "resource": "module.vpc.aws_db_subnet_group.database[0]",
+            "attribute": [
+                "name"
+            ]
+        },
+        {
+            "resource": "module.db.module.db_instance.aws_db_instance.this[0]",
+            "attribute": [
+                "id"
+            ]
+        },
+        {
+            "resource": "module.db.module.db_parameter_group.aws_db_parameter_group.this[0]",
+            "attribute": [
+                "arn"
+            ]
+        },
+        {
+            "resource": "module.db_disabled.module.db_instance.aws_db_instance.this[0]",
+            "attribute": [
+                "status"
+            ]
+        },
+        {
+            "resource": "module.db_disabled.module.db_instance.aws_db_instance.this[0]",
+            "attribute": [
+                "username"
+            ]
+        },
+        {
+            "resource": "module.security_group.aws_security_group.this[0]",
+            "attribute": [
+                "id"
+            ]
         },
         {
             "resource": "module.vpc.aws_subnet.outpost",
             "attribute": []
+        },
+        {
+            "resource": "module.vpc.aws_route_table_association.redshift_public",
+            "attribute": []
+        },
+        {
+            "resource": "module.db.module.db_instance.data.aws_iam_policy_document.enhanced_monitoring",
+            "attribute": [
+                "json"
+            ]
+        },
+        {
+            "resource": "module.vpc.aws_vpc.this[0]",
+            "attribute": [
+                "ipv6_cidr_block"
+            ]
+        },
+        {
+            "resource": "module.vpc.aws_subnet.public",
+            "attribute": []
+        },
+        {
+            "resource": "module.db_disabled.module.db_option_group.aws_db_option_group.this[0]",
+            "attribute": [
+                "arn"
+            ]
+        },
+        {
+            "resource": "module.db.module.db_instance.aws_db_instance.this[0]",
+            "attribute": [
+                "name"
+            ]
+        },
+        {
+            "resource": "module.db_default.module.db_instance.aws_iam_role.enhanced_monitoring[0]",
+            "attribute": [
+                "name"
+            ]
         },
         {
             "resource": "module.vpc.aws_vpn_gateway.this[0]",
@@ -20050,13 +19959,101 @@
             ]
         },
         {
-            "resource": "module.vpc.aws_redshift_subnet_group.redshift[0]",
+            "resource": "module.vpc.aws_route_table.elasticache",
+            "attribute": []
+        },
+        {
+            "resource": "module.security_group.aws_security_group.this[0]",
+            "attribute": [
+                "vpc_id"
+            ]
+        },
+        {
+            "resource": "module.vpc.aws_network_acl.private[0]",
             "attribute": [
                 "id"
             ]
         },
         {
-            "resource": "module.vpc.aws_route_table_association.redshift_public",
+            "resource": "module.vpc.aws_default_vpc.this[0]",
+            "attribute": [
+                "cidr_block"
+            ]
+        },
+        {
+            "resource": "module.vpc.aws_vpc.this[0]",
+            "attribute": [
+                "default_security_group_id"
+            ]
+        },
+        {
+            "resource": "module.db.module.db_parameter_group.aws_db_parameter_group.this[0]",
+            "attribute": [
+                "id"
+            ]
+        },
+        {
+            "resource": "module.vpc.aws_network_acl.outpost[0]",
+            "attribute": [
+                "id"
+            ]
+        },
+        {
+            "resource": "module.vpc.aws_vpn_gateway_attachment.this[0]",
+            "attribute": [
+                "vpn_gateway_id"
+            ]
+        },
+        {
+            "resource": "module.vpc.aws_network_acl.intra[0]",
+            "attribute": [
+                "arn"
+            ]
+        },
+        {
+            "resource": "module.security_group.aws_security_group.this[0]",
+            "attribute": [
+                "description"
+            ]
+        },
+        {
+            "resource": "module.vpc.aws_route_table_association.database",
+            "attribute": []
+        },
+        {
+            "resource": "module.vpc.aws_route_table_association.private",
+            "attribute": []
+        },
+        {
+            "resource": "module.db.module.db_instance.aws_db_instance.this[0]",
+            "attribute": [
+                "availability_zone"
+            ]
+        },
+        {
+            "resource": "module.db.random_password.master_password[0]",
+            "attribute": [
+                "result"
+            ]
+        },
+        {
+            "resource": "module.db_disabled.module.db_instance.aws_cloudwatch_log_group.this",
+            "attribute": []
+        },
+        {
+            "resource": "module.security_group.aws_security_group.this[0]",
+            "attribute": [
+                "owner_id"
+            ]
+        },
+        {
+            "resource": "module.vpc.aws_network_acl.public[0]",
+            "attribute": [
+                "arn"
+            ]
+        },
+        {
+            "resource": "module.vpc.aws_route.database_nat_gateway",
             "attribute": []
         }
     ]

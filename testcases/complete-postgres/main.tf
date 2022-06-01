@@ -82,7 +82,7 @@ module "db" {
   username = "complete_postgresql"
   port     = 5432
 
-  multi_az               = true
+
   db_subnet_group_name   = module.vpc.database_subnet_group
   vpc_security_group_ids = [module.security_group.security_group_id]
 
