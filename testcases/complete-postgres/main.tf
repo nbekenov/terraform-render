@@ -61,7 +61,7 @@ module "security_group" {
 ################################################################################
 
 module "db" {
-  source = "../../terraform-aws-rds"
+  source = "../../my-custom-rds-module"
 
   identifier = local.name
 
@@ -123,7 +123,7 @@ module "db" {
 }
 
 module "db_default" {
-  source = "../../terraform-aws-rds"
+  source = "../../my-custom-rds-module"
 
   identifier = "${local.name}-default"
 
@@ -157,7 +157,7 @@ module "db_default" {
 }
 
 module "db_disabled" {
-  source = "../../terraform-aws-rds"
+  source = "../../my-custom-rds-module"
 
   identifier = "${local.name}-disabled"
 

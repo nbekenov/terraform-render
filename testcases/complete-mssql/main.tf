@@ -112,7 +112,7 @@ resource "aws_directory_service_directory" "demo" {
 ################################################################################
 
 module "db" {
-  source = "../../terraform-aws-rds"
+  source = "../../my-custom-rds-module"
 
   identifier = local.name
 
@@ -159,7 +159,7 @@ module "db" {
 }
 
 module "db_disabled" {
-  source = "../../terraform-aws-rds"
+  source = "../../my-custom-rds-module"
 
   identifier = "${local.name}-disabled"
 

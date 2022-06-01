@@ -60,7 +60,7 @@ module "security_group" {
 ################################################################################
 
 module "db" {
-  source = "../../terraform-aws-rds"
+  source = "../../my-custom-rds-module"
 
   identifier = "demodb-oracle"
 
@@ -103,7 +103,7 @@ module "db" {
 }
 
 module "db_disabled" {
-  source = "../../terraform-aws-rds"
+  source = "../../my-custom-rds-module"
 
   identifier = "${local.name}-disabled"
 

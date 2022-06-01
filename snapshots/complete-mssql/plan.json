@@ -3021,7 +3021,7 @@
             ],
             "module_calls": {
                 "db": {
-                    "source": "../../terraform-aws-rds",
+                    "source": "../../my-custom-rds-module",
                     "expressions": {
                         "allocated_storage": {
                             "constant_value": 20
@@ -5360,7 +5360,7 @@
                     }
                 },
                 "db_disabled": {
-                    "source": "../../terraform-aws-rds",
+                    "source": "../../my-custom-rds-module",
                     "expressions": {
                         "create_db_instance": {
                             "constant_value": false

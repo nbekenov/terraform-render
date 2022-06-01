@@ -7,7 +7,7 @@ help:
 	        printf "    * %-18.18s %s\n",$$1":",$$2 \
 	    }' $(MAKEFILE_LIST)
 
-all: install lint build pytest
+all: clean install lint build test
 
 install: ## install python packages
 	@printf "\n\n\033[0;32m** Installing dependencies **\n\n\033[0m"
